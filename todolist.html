@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
+      background-image: url(/images/todo.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Center input and button */
+    #inputContainer {
+      display: flex;
+      justify-content: center; /* center horizontally */
+      align-items: center;
+      gap: 10px; /* space between input and button */
+      margin-bottom: 20px;
+    }
+
+    #taskInput {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #addTaskBtn {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      padding: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .deleteBtn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My To-Do List</h1>
+
+  <!-- Container for input and button -->
+  <div id="inputContainer">
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button id="addTaskBtn">Add Task</button>
+  </div>
+
+  <!-- Task list -->
+  <ul id="taskList"></ul>
+
+  <script>
+    // Select elements from the page
+    const taskInput = document.getElementById('taskInput'); // input box
+    const addTaskBtn = document.getElementById('addTaskBtn'); // button
+    const taskList = document.getElementById('taskList'); // list to add tasks
+
+    // When "Add Task" is clicked
+    addTaskBtn.addEventListener('click', function () {
+      const taskText = taskInput.value; // get input value
+
+      // Prevent blank input
+      if (taskText.trim() === '') {
+        alert('Please enter a task.');
+        return;
+      }
+
+      // Create new list item
+      const li = document.createElement('li');
+      li.textContent = taskText; // set task text
+
+      // Create delete button
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.className = 'deleteBtn';
+
+      // Delete this task when delete button clicked
+      deleteBtn.addEventListener('click', function () {
+        taskList.removeChild(li);
+      });
+
+      // Add delete button to task
+      li.appendChild(deleteBtn);
+
+      // Add task to the list
+      taskList.appendChild(li);
+
+      // Clear input
+      taskInput.value = '';
+    });
+  </script>
+
+</body>
+</html>

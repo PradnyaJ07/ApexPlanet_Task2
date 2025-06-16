@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #0066cc;
+      text-align: center;
+    }
+
+    form {
+      background-color: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>3 Idiots Movie - Feedback Form</h2>
+
+  <form id="feedbackForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <div id="nameError" class="error"></div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error"></div>
+
+    <label for="message">Your Feedback:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <div id="messageError" class="error"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Stop form from submitting
+
+      // Clear previous errors
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("messageError").textContent = "";
+
+      // Get values
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+
+      let valid = true;
+
+      // Name validation: alphabets and spaces only
+      if (!/^[A-Za-z\s]+$/.test(name)) {
+        document.getElementById("nameError").textContent = "Name must contain only letters and spaces.";
+        valid = false;
+      }
+
+      // Email check
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+        valid = false;
+      }
+
+      // Message check
+      if (message === "") {
+        document.getElementById("messageError").textContent = "Please write your feedback.";
+        valid = false;
+      }
+
+      // Final validation
+      if (valid) {
+        alert("Thank you for your feedback on 3 Idiots!");
+        document.getElementById("feedbackForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

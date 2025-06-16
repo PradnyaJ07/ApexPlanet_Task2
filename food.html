@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasty Bites</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+    }
+
+    header {
+      background-color: #ff7043;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main.grid-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .featured, .popular, .tips {
+      background-color: #fff3e0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .featured {
+      background-color: #ffe0b2;
+    }
+
+    img {
+      
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      height:350px;
+       width:350px;
+    }
+
+    footer {
+      background-color: #ff7043;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      main.grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tasty Bites</h1>
+    <nav class="navbar">
+      <a href="#">Home</a>
+      <a href="#">Recipes</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="grid-container">
+    <section class="featured">
+      <h2>Featured Dish</h2>
+      <img src="/images/spaghetti.jpg" alt="Spaghetti Carbonara">
+      <p>Delicious Spaghetti Carbonara with creamy sauce and crispy bacon.</p>
+    </section>
+
+    <section class="popular">
+      <h2>Popular Picks</h2>
+      <img src="/images/pizza.jpg" alt="Pizza Margherita">
+      <ul>
+        <li>Pizza Margherita</li>
+        <li>Grilled Paneer Tikka</li>
+        <li>Chocolate Lava Cake</li>
+      </ul>
+    </section>
+
+    <section class="tips">
+      <h2>Cooking Tips</h2>
+      <img src="/images/Cooking_tips.jpg" alt="Cooking Tips">
+      <p>Always use fresh ingredients and don’t overcook herbs.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tasty Bites. All rights reserved.</p>
+  </footer>
+</body>
+</html>
